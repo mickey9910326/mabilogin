@@ -74,7 +74,7 @@ def main():
         rows = list(csv.reader(csvfile))
         for row in rows[start:end + 1]:
             open_mabi(row[0], row[1], p)
-            # time.sleep(delay_s)
+            time.sleep(delay_s)
 
 
 if __name__ == '__main__':
