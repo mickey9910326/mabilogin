@@ -25,18 +25,21 @@ def open_mabi(username, password, path):
     otp = auto_filler.beanfunClient.get_account_otp(
         auto_filler.accounts[0])
     print(otp)
+    # 有時候DES解好後面會帶 "\x00" ，不知原因
     password = otp.split(" ")[-1].replace("\x00", "")
     print(password)
 
     mabi_path = path + "\\Mabinogi.exe"
     acc = auto_filler.accounts[0].acc
     args = [mabi_path, f"/N:{acc}", f"/V:{password}", "/T:gamania"]
+    print(" ".join(args))
     subprocess.Popen(args=args, cwd=path)
 
 
 delay_s = 25
 main_path = "F:\\Nexon\\Mabinogi"
 clone_path = "F:\\Nexon\\Mabinogi_clone"
+
 
 def main():
     if len(sys.argv) != 3 and len(sys.argv) != 4:
@@ -64,7 +67,7 @@ def main():
         print("py -m mabilogin [csv filename] [start num] [end num]")
         print("end num should be intger")
         return
-    
+
     if sys.argv[1] == "main":
         p = main_path
     else:
