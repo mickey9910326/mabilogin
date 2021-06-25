@@ -5,6 +5,8 @@ import sys
 import os
 
 from mabilogin.beanfun import BeanfunClient
+import win32gui
+import win32process
 
 
 class AutoFiller:
@@ -29,11 +31,42 @@ def open_mabi(username, password, path):
     password = otp.split(" ")[-1].replace("\x00", "")
     print(password)
 
-    mabi_path = path + "\\Mabinogi.exe"
+    mabi_path = path + "\\Client.exe"
     acc = auto_filler.accounts[0].acc
-    args = [mabi_path, f"/N:{acc}", f"/V:{password}", "/T:gamania"]
+    args = [
+        mabi_path,
+        "code:1622",
+        "ver:343",
+        "logip:210.208.80.6",
+        "logport:11000",
+        "chatip:210.208.80.10",
+        "chatport:8004",
+        "setting:\"file://data/features.xml=Regular, Taiwan\"",
+        f"/N:{acc}",
+        f"/V:{password}",
+        "/T:gamania"
+    ]
     print(" ".join(args))
-    subprocess.Popen(args=args, cwd=path)
+    p = subprocess.Popen(args=" ".join(args), cwd=path, start_new_session=True)
+    print("pid is", p.pid)
+    return p
+
+
+def get_hwnds_for_pid(pid):
+    def callback(hwnd, hwnds):
+        if win32gui.IsWindowVisible(hwnd) and win32gui.IsWindowEnabled(hwnd):
+            _, found_pid = win32process.GetWindowThreadProcessId(hwnd)
+            if found_pid == pid:
+                hwnds.append(hwnd)
+        return True
+
+    hwnds = []
+    win32gui.EnumWindows(callback, hwnds)
+    return hwnds
+
+def setWindow(pid):
+    hwnd = get_hwnds_for_pid(pid)[0]
+    win32gui.SetWindowPos(hwnd, 1, 10, 10, 1090, 764, 0x2000)
 
 
 delay_s = 25
@@ -76,7 +109,7 @@ def main():
     with open(filename, newline='') as csvfile:
         rows = list(csv.reader(csvfile))
         for row in rows[start:end + 1]:
-            open_mabi(row[0], row[1], p)
+            pid = open_mabi(row[0], row[1], p)
             time.sleep(delay_s)
 
 
