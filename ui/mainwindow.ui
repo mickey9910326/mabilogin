@@ -89,7 +89,7 @@ QPushButton:pressed {
 }
 </string>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
+   <layout class="QVBoxLayout" name="appMargins" stretch="0,0">
     <property name="spacing">
      <number>0</number>
     </property>
