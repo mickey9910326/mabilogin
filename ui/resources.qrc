@@ -1,0 +1,13 @@
+<RCC>
+  <qresource prefix="images">
+    <file>images/mainuser.png</file>
+    <file>icons/cil-library-add.png</file>
+    <file>images/mushroom_20x20.png</file>
+    <file>icons/icon_close.png</file>
+    <file>icons/icon_maximize.png</file>
+    <file>icons/icon_menu.png</file>
+    <file>icons/icon_minimize.png</file>
+    <file>icons/icon_restore.png</file>
+    <file>icons/icon_settings.png</file>
+  </qresource>
+</RCC>

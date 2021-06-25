@@ -1,3 +1,4 @@
-uptime
 requests
+pywin32
+uptime
 pycryptodome
