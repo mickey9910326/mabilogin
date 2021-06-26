@@ -18,11 +18,11 @@ def do_pyuic():
         print(cmd)
         os.system(cmd)
 
-        fin = open(pyfile, "rt")
+        fin = open(pyfile, "rt", encoding="utf-8")
         data = fin.read()
         data = data.replace('import resources_rc', 'import mabilogin_gui.ui.resources_rc')
         fin.close()
-        fin = open(pyfile, "wt")
+        fin = open(pyfile, "wt", encoding="utf-8")
         fin.write(data)
         fin.close()
 
