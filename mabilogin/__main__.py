@@ -70,8 +70,8 @@ def setWindow(pid):
 
 
 delay_s = 25
-main_path = "F:\\Nexon\\Mabinogi"
-clone_path = "F:\\Nexon\\Mabinogi_clone"
+main_path = "C:\\Nexon\\Mabinogi"
+clone_path = "C:\\Nexon\\Mabinogi"
 
 
 def main():

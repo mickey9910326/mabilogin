@@ -93,9 +93,7 @@
           <widget class="QLabel" name="accNumLbl">
            <property name="font">
             <font>
-             <family>Microsoft YaHei UI</family>
              <pointsize>13</pointsize>
-             <weight>75</weight>
              <bold>true</bold>
             </font>
            </property>

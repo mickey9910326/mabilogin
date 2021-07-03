@@ -1,12 +1,10 @@
 from mabilogin_gui.ui.ui_mainwindow import Ui_MainWindow
 from mabilogin_gui.ui.ui_acc_wgt import Ui_accWgt
+from mabilogin_gui.ui.ui_acc_setting_wgt import Ui_accSettingWgt
 from mabilogin_gui.custom_grips import CustomGrip
 
-from PyQt5.QtWidgets import QMainWindow, QApplication, QFileDialog, QWidget
-from PyQt5.QtCore import pyqtSlot, QThread, pyqtSignal
-from PyQt5 import QtGui
-from PyQt5 import QtCore
-from PyQt5 import QtWidgets
+from PySide6.QtWidgets import QMainWindow, QApplication, QFileDialog, QWidget
+from PySide6 import QtCore
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
@@ -40,6 +38,20 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.right_grip = CustomGrip(self, QtCore.Qt.RightEdge, True)
         self.top_grip = CustomGrip(self, QtCore.Qt.TopEdge, True)
         self.bottom_grip = CustomGrip(self, QtCore.Qt.BottomEdge, True)
+
+        self.wgt = QWidget()
+        self.accWgt_ = Ui_accSettingWgt()
+        self.ctxWgtLyt.addWidget(self.wgt)
+        self.accWgt_.setupUi(self.wgt)
+        # self.accWgt_.detailWgt.hide()
+
+        self.wgt2 = QWidget()
+        self.accWgt_ = Ui_accWgt()
+        self.ctxWgtLyt.addWidget(self.wgt2)
+        self.accWgt_.setupUi(self.wgt2)
+        self.accWgt_.detailWgt.hide()
+        # self.verticalLayout_ctxWgt.addWidget()
+
 
     def maximize_restore(self):
         if self.maximized == False:

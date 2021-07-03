@@ -14,7 +14,7 @@ def do_pyuic():
     for uifile in uifiles:
         name = os.path.split(uifile)[1]
         pyfile = 'mabilogin_gui/ui/ui_' + os.path.splitext(name)[0] + '.py'
-        cmd    = 'pyuic5 ' + uifile +' -o ' + pyfile
+        cmd    = 'PySide6-uic ' + uifile +' -o ' + pyfile
         print(cmd)
         os.system(cmd)
 
@@ -27,7 +27,7 @@ def do_pyuic():
         fin.close()
 
 def do_pyrcc():
-    cmd = "pyrcc5 ui/resources.qrc -o mabilogin_gui/ui/resources_rc.py"
+    cmd = "PySide6-rcc ui/resources.qrc -o mabilogin_gui/ui/resources_rc.py"
     print(cmd)
     os.system(cmd)
 
