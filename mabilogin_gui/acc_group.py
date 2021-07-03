@@ -13,41 +13,12 @@ import os
 
 class AccGroup():
 
-    class Account():
-        def __init__(self, name, username, password, lastlogin='',
-                     window_cfg=0, x=0, y=0, size_x=1920, size_y=1080,
-                     note=''
-                     ) -> None:
-            self.name = name
-            self.username = username
-            self.password = password
-            self.lastlogin = lastlogin
-            self.window_cfg = window_cfg
-            self.x = x
-            self.y = y
-            self.size_x = size_x
-            self.size_y = size_y
-            self.note = note
-
-        def toCsvRow(self) -> typing.List[str]:
-            return [self.name,
-                    self.username,
-                    self.password,
-                    self.lastlogin,
-                    str(self.window_cfg),
-                    str(self.x),
-                    str(self.y),
-                    str(self.size_x),
-                    str(self.size_y),
-                    self.note
-                    ]
-
-        def __str__(self):
-            return f"Name:{self.name}"
-
     def __init__(self, wgt, config_file) -> None:
         self.base_widget = wgt  # which widget to layout
         self.config_file = config_file
+        self.accHdlrs = []
+        self.accWgts = []
+
         self.load_cfg()
         self.ui_setup()
         self.get_accounts()
@@ -78,11 +49,11 @@ class AccGroup():
         self.ui_accSetting.setupUi(self.accSettingWgt)
         self.ui_accSetting.mabiFolderLineEdit.setText(self.cfg['mabi_path'])
 
-        self.ui_acc = Ui_accWgt()
-        self.accWgt = QWidget()
-        self.mainLyt.addWidget(self.accWgt)
-        self.ui_acc.setupUi(self.accWgt)
-        self.ui_acc.detailWgt.hide()
+        # self.ui_acc = Ui_accWgt()
+        # self.accWgt = QWidget()
+        # self.mainLyt.addWidget(self.accWgt)
+        # self.ui_acc.setupUi(self.accWgt)
+        # self.ui_acc.detailWgt.hide()
 
     def get_accounts(self):
         fp = f"acc/{self.cfg['acc_csv']}"
@@ -94,8 +65,13 @@ class AccGroup():
         with open(fp, mode='r', newline='', encoding='utf8') as csvfile:
             rows = list(csv.reader(csvfile))
             print(rows)
-            acc = AccountHandler(*rows[1])
-            print(acc)
-        
-        self.ui_acc.pushButton.clicked.connect(lambda:acc.login())
-        self.ui_acc.pushButton_2.clicked.connect(lambda:acc.open(self.cfg['mabi_path']))
+            for idx, row in enumerate(rows[1::]):
+                accHdlr = AccountHandler(*row)
+
+                accWgt = QWidget()
+                self.mainLyt.addWidget(accWgt)
+                accHdlr.setupUi(accWgt, idx + 1)
+                # accHdlr.ui.detailWgt.hide()
+
+                self.accHdlrs.append(accHdlr)
+                self.accWgts.append(accHdlr)

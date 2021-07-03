@@ -1,4 +1,5 @@
 from mabilogin.beanfun import BeanfunClient
+from mabilogin_gui.ui.ui_acc_wgt import Ui_accWgt
 
 import subprocess
 import os
@@ -36,6 +37,9 @@ class AccountHandler():
         self.process = None
         self.pid = 0
 
+        # ui
+        self.ui = Ui_accWgt()
+
     def login(self) -> None:
         try:
             self.beanfunClient.login(self.username, self.password)
@@ -70,3 +74,26 @@ class AccountHandler():
         self.process = subprocess.Popen(
             cmd, cwd=mabi_path, start_new_session=True)
         self.opened = True
+    
+    def loginAndOpen(self):
+        self.login()
+        self.open()
+    
+    def ui_toggleDetail(self):
+        is_hidden = self.ui.detailWgt.isHidden()
+        self.ui.detailWgt.setHidden(not is_hidden)
+
+    def setupUi(self, wgt, index):
+        self.ui.setupUi(wgt)
+        self.ui.accNumLbl.setText(str(index))
+        self.ui.accNameLbl.setText(self.name)
+        self.ui.usernameLineEdit.setText(self.username)
+        self.ui.passwordLineEdit.setText(self.password)
+        self.ui.lastLoginLineEdit.setText(self.lastlogin)
+        self.ui.sizeXLineEdit.setText(self.size_x)
+        self.ui.sizeYLineEdit.setText(self.size_y)
+        self.ui.positionXLineEdit.setText(self.x)
+        self.ui.positionYLineEdit.setText(self.y)
+        self.ui.openCloseBtn.clicked.connect(self.loginAndOpen)
+        self.ui.resetWindowBtn.clicked.connect(self.ui_toggleDetail)
+        self.ui.detailWgt.hide()

@@ -115,7 +115,7 @@
        <widget class="QWidget" name="accNameWgt" native="true">
         <layout class="QHBoxLayout" name="horizontalLayout_9">
          <item>
-          <widget class="QLabel" name="label">
+          <widget class="QLabel" name="accNameLbl">
            <property name="text">
             <string>名稱</string>
            </property>
@@ -178,14 +178,14 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QPushButton" name="pushButton">
+          <widget class="QPushButton" name="openCloseBtn">
            <property name="text">
             <string>開啟/關閉</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QPushButton" name="pushButton_2">
+          <widget class="QPushButton" name="resetWindowBtn">
            <property name="text">
             <string>重製視窗大小</string>
            </property>
@@ -204,42 +204,42 @@
        <widget class="QWidget" name="widget" native="true">
         <layout class="QFormLayout" name="formLayout">
          <item row="0" column="0">
-          <widget class="QLabel" name="label_4">
+          <widget class="QLabel" name="usernameLbl">
            <property name="text">
             <string>帳號</string>
            </property>
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit">
+          <widget class="QLineEdit" name="usernameLineEdit">
            <property name="text">
             <string>account</string>
            </property>
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="label_5">
+          <widget class="QLabel" name="passwordLbl">
            <property name="text">
             <string>密碼</string>
            </property>
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLineEdit" name="lineEdit_2">
+          <widget class="QLineEdit" name="passwordLineEdit">
            <property name="text">
             <string>password</string>
            </property>
           </widget>
          </item>
          <item row="2" column="0">
-          <widget class="QLabel" name="label_6">
+          <widget class="QLabel" name="lastLoginLbl">
            <property name="text">
             <string>上次</string>
            </property>
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLineEdit" name="lineEdit_3">
+          <widget class="QLineEdit" name="lastLoginLineEdit">
            <property name="text">
             <string>2021/06/26</string>
            </property>
@@ -318,10 +318,10 @@
              </widget>
             </item>
             <item>
-             <widget class="QWidget" name="widget_9" native="true">
+             <widget class="QWidget" name="windowsWgt" native="true">
               <layout class="QVBoxLayout" name="verticalLayout_6">
                <item>
-                <widget class="QComboBox" name="comboBox">
+                <widget class="QComboBox" name="windowCfgCbox">
                  <item>
                   <property name="text">
                    <string>預設</string>
@@ -345,7 +345,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QWidget" name="widget_7" native="true">
+                <widget class="QWidget" name="sizeWgt" native="true">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
                    <horstretch>0</horstretch>
@@ -369,14 +369,14 @@
                    <number>0</number>
                   </property>
                   <item>
-                   <widget class="QLabel" name="label_12">
+                   <widget class="QLabel" name="sizeXLbl">
                     <property name="text">
                      <string>X：</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="lineEdit_6">
+                   <widget class="QLineEdit" name="sizeXLineEdit">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -392,14 +392,14 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_11">
+                   <widget class="QLabel" name="sizeYLbl">
                     <property name="text">
                      <string>  Y：</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="lineEdit_7">
+                   <widget class="QLineEdit" name="sizeYLineEdit">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -418,7 +418,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QWidget" name="widget_6" native="true">
+                <widget class="QWidget" name="positionWgt" native="true">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Minimum">
                    <horstretch>0</horstretch>
@@ -442,14 +442,14 @@
                    <number>0</number>
                   </property>
                   <item>
-                   <widget class="QLabel" name="label_13">
+                   <widget class="QLabel" name="positionXLbl">
                     <property name="text">
                      <string>X：</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="lineEdit_4">
+                   <widget class="QLineEdit" name="positionXLineEdit">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -465,14 +465,14 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label_10">
+                   <widget class="QLabel" name="positionYLbl">
                     <property name="text">
                      <string>  Y：</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLineEdit" name="lineEdit_5">
+                   <widget class="QLineEdit" name="positionYLineEdit">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                       <horstretch>0</horstretch>
