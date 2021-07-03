@@ -316,10 +316,6 @@ class Ui_MainWindow(object):
 
         self.ctxWgt = QWidget(self.appWgt)
         self.ctxWgt.setObjectName(u"ctxWgt")
-        self.ctxWgtLyt = QVBoxLayout(self.ctxWgt)
-        self.ctxWgtLyt.setSpacing(0)
-        self.ctxWgtLyt.setObjectName(u"ctxWgtLyt")
-        self.ctxWgtLyt.setContentsMargins(0, 0, 0, 0)
 
         self.horizontalLayout_2.addWidget(self.ctxWgt, 0, Qt.AlignTop)
 

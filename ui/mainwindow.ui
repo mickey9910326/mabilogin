@@ -719,25 +719,7 @@ background-repeat: no-repeat;</string>
         </widget>
        </item>
        <item alignment="Qt::AlignTop">
-        <widget class="QWidget" name="ctxWgt" native="true">
-         <layout class="QVBoxLayout" name="ctxWgtLyt">
-          <property name="spacing">
-           <number>0</number>
-          </property>
-          <property name="leftMargin">
-           <number>0</number>
-          </property>
-          <property name="topMargin">
-           <number>0</number>
-          </property>
-          <property name="rightMargin">
-           <number>0</number>
-          </property>
-          <property name="bottomMargin">
-           <number>0</number>
-          </property>
-         </layout>
-        </widget>
+        <widget class="QWidget" name="ctxWgt" native="true"/>
        </item>
        <item>
         <widget class="QWidget" name="leftBarExtraFrm" native="true">
