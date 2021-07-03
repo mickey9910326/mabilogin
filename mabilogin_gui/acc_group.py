@@ -1,5 +1,6 @@
 from mabilogin_gui.ui.ui_acc_setting_wgt import Ui_accSettingWgt
 from mabilogin_gui.ui.ui_acc_wgt import Ui_accWgt
+from mabilogin_gui.account_handler import AccountHandler
 
 from PySide6.QtWidgets import QWidget, QVBoxLayout
 
@@ -93,11 +94,8 @@ class AccGroup():
         with open(fp, mode='r', newline='', encoding='utf8') as csvfile:
             rows = list(csv.reader(csvfile))
             print(rows)
-            acc = AccGroup.Account(*rows[1])
+            acc = AccountHandler(*rows[1])
             print(acc)
-
-        with open(fp, mode='w', newline='', encoding='utf8') as csvfile:
-            writer = csv.writer(csvfile)
-            writer.writerow(["名稱", "帳號", "密碼", "最後登入時間", "視窗設定",
-                            "視窗x位置", "視窗y位置", "視窗x大小", "視窗y大小", "註記"])
-            writer.writerow(acc.toCsvRow())
+        
+        self.ui_acc.pushButton.clicked.connect(lambda:acc.login())
+        self.ui_acc.pushButton_2.clicked.connect(lambda:acc.open(self.cfg['mabi_path']))
