@@ -48,7 +48,7 @@ def open_mabi(username, password, path):
     ]
     print(" ".join(args))
     p = subprocess.Popen(args=" ".join(args), cwd=path, start_new_session=True)
-    print("pid is", p.pid)
+    # print("pid is", p.pid)
     return p
 
 
@@ -64,14 +64,15 @@ def get_hwnds_for_pid(pid):
     win32gui.EnumWindows(callback, hwnds)
     return hwnds
 
-def setWindow(pid):
+
+def setWindow(pid, x, y, size_x, size_y):
     hwnd = get_hwnds_for_pid(pid)[0]
-    win32gui.SetWindowPos(hwnd, 1, 10, 10, 1090, 764, 0x2000)
+    win32gui.SetWindowPos(hwnd, 1, x, y, size_x, size_y, 0x2000)
 
 
 delay_s = 25
-main_path = "C:\\Nexon\\Mabinogi"
-clone_path = "C:\\Nexon\\Mabinogi"
+main_path = "F:\\Nexon\\Mabinogi"
+clone_path = "F:\\Nexon\\Mabinogi_clone"
 
 
 def main():
@@ -106,11 +107,21 @@ def main():
     else:
         p = clone_path
 
+    procs = []
     with open(filename, newline='') as csvfile:
         rows = list(csv.reader(csvfile))
         for row in rows[start:end + 1]:
-            pid = open_mabi(row[0], row[1], p)
+            proc = open_mabi(row[0], row[1], p)
+            procs.append(proc)
             time.sleep(delay_s)
+
+    print(procs)
+    x = 0
+    y = 0
+    for proc in procs:
+        setWindow(proc.pid, x, y, 1090, 764)
+        x = x + 50
+        y = y + 50
 
 
 if __name__ == '__main__':

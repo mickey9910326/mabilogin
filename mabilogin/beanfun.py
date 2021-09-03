@@ -46,8 +46,8 @@ class BeanfunClient:
         viewstateGenerator_pattern = r'id="__VIEWSTATEGENERATOR" value="(.*?)"'
         viewstateGenerator = re.findall(viewstateGenerator_pattern, login_page.text)[0]
         
-        samplecaptcha_pattern = r'id="LBD_VCID_c_login_idpass_form_samplecaptcha" value="(.*?)"'
-        samplecaptcha = re.findall(samplecaptcha_pattern, login_page.text)[0]
+        # samplecaptcha_pattern = r'id="LBD_VCID_c_login_idpass_form_samplecaptcha" value="(.*?)"'
+        # samplecaptcha = re.findall(samplecaptcha_pattern, login_page.text)[0]
 
         login_data = {
             '__EVENTTARGET': '',
@@ -57,13 +57,14 @@ class BeanfunClient:
             '__EVENTVALIDATION': eventvalidation,
             't_AccountID': username,
             't_Password': password,
-            'CodeTextBox': '',
+            # 'CodeTextBox': '',
             'btn_login': '登入',
-            'LBD_VCID_c_login_idpass_form_samplecaptcha': samplecaptcha
+            # 'LBD_VCID_c_login_idpass_form_samplecaptcha': samplecaptcha
         }
 
         login_result = self.session.post(login_page_url, data=login_data, headers=self.headers)
         akey_pattern = r'AuthKey.value = "(.*?)"'
+        # print(login_result.text)
         akey = re.findall(akey_pattern, login_result.text)[0]
         
         auth_url = 'https://tw.newlogin.beanfun.com/login/final_step.aspx?akey=' + akey
